@@ -4,14 +4,21 @@ service: sns-example
 provider:
   name: aws
   runtime: nodejs8.10
+  environment:
+    TOPIC_ARN:
+      Ref: SNSTopic
 
 functions:
   hello:
     handler: handler.hello
+    events:
+      - http:
+          path: publishMessage
+          method: post
 
 resources:
   Resources:
-    SQSQueue:
+    SNSTopic:
       Type: AWS::SNS::Topic
       Properties:
         TopicName: "Test-Topic"
