@@ -13,7 +13,7 @@ provider:
       Action:
         - "SNS:Publish"
       Resource:
-        Fn::GetAtt: [SNSTopic, Arn]
+        Ref: SNSTopic
 
 functions:
   hello:

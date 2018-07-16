@@ -1,6 +1,6 @@
 'use strict';
 
-const TOPIC_URL = process.env.TOPIC_ARN;
+const TOPIC_ARN = process.env.TOPIC_ARN;
 const AWS = require('aws-sdk');
 
 module.exports.publishToSNS = (event, context, callback) => {
