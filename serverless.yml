@@ -8,12 +8,19 @@ provider:
     TOPIC_ARN:
       Ref: SNSTopic
 
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "SNS:Publish"
+      Resource:
+        Fn::GetAtt: [SNSTopic, Arn]
+
 functions:
   hello:
-    handler: handler.hello
+    handler: handler.publishToSNS
     events:
       - http:
-          path: publishMessage
+          path: publishToSNS
           method: post
 
 resources:
