@@ -28,3 +28,10 @@ module.exports.publishToSNS = (event, context, callback) => {
   callback(null, response);
 
 };
+
+module.exports.processSNSMessage = (event, context, callback) => {
+
+  console.log(event.Records[0].Sns.Message);
+  callback(null);
+};
+
